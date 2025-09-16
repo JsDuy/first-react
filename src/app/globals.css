@@ -32,13 +32,15 @@ body {
 
 .footer {
   background-image: url('../../data/Na.png');
-  background-size: cover; /* Đảm bảo ảnh nền phủ kín toàn bộ phần tử */
-    background-position: left; /* Căn giữa ảnh nền */
-    background-repeat: no-repeat; /* Không lặp lại ảnh */
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  display: flex;
 }
 
 @media only screen and (max-width: 900px) {
   .footer {
-    background-image: url('../../data/Na2.png')
+    background-image: url('../../data/Na2.png');
+    display: block;
   }
 }

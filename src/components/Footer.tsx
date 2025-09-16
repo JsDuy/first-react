@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <>
         <hr className="my-4 bg-white h-0.5 w-1/2 justify-self-center -mb-2" />
-        <section className="flex p-7 footer">
+        <section className="p-7 footer">
             <div className="flex-3 p-4">
                 <img 
                 src="https://pngimg.com/d/ibm_PNG19649.png" 
