@@ -57,6 +57,18 @@ body {
   color: aqua;
 }
 
+.login {
+  justify-items: center;
+  width: 500px;
+  justify-self: center;
+  border: 1px solid white;
+  margin: 100px 0 100px 0;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgb(128, 128, 128);
+}
+
 @media only screen and (max-width: 900px) {
   .footer {
     background-image: url('../../data/Na2.png');
@@ -66,6 +78,6 @@ body {
 
 @media only screen and (max-width: 500px) {
   .register {
-  width: 400px;
+  width: 350px;
 }
 }
