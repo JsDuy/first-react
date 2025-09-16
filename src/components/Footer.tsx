@@ -19,12 +19,12 @@ export default function Footer() {
             </div>
             <div className="flex-3 p-4">
                 <h1 className="mb-2 font-bold">ĐỊA CHỈ</h1>
-                <ul>
-                    <li>Số 4 đường Nguyễn Ái Quốc, Trảng Dài, Đồng Nai</li>
+                <ul className="list-disc">
+                    <li className="ml-5">Số 4 đường Nguyễn Ái Quốc, Trảng Dài, Đồng Nai</li>
                 </ul>
                 <h1 className="mb-2 font-bold">SỐ ĐIỆN THOẠI</h1>
-                <ul>
-                    <li>03322550022</li>
+                <ul className="list-disc">
+                    <li className="ml-5">03322550022</li>
                 </ul>
             </div>
             <div className="flex-2 p-4">
