@@ -22,6 +22,10 @@ export default function Footer() {
                 <ul>
                     <li>Số 4 đường Nguyễn Ái Quốc, Trảng Dài, Đồng Nai</li>
                 </ul>
+                <h1 className="mb-2 font-bold">SỐ ĐIỆN THOẠI</h1>
+                <ul>
+                    <li>03322550022</li>
+                </ul>
             </div>
             <div className="flex-2 p-4">
                 <h1 className="mb-2 font-bold">TỔNG QUÁT</h1>
