@@ -37,6 +37,25 @@ body {
   background-repeat: no-repeat;
   display: flex;
 }
+.register {
+  justify-items: center;
+  width: 500px;
+  justify-self: center;
+  border: 1px solid white;
+  margin: 100px 0 100px 0;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgb(128, 128, 128);
+}
+
+.ask-login {
+  transition: color 0.5s ease;
+}
+
+.ask-login:hover {
+  color: aqua;
+}
 
 @media only screen and (max-width: 900px) {
   .footer {
