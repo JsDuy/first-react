@@ -63,3 +63,9 @@ body {
     display: block;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .register {
+  width: 400px;
+}
+}
