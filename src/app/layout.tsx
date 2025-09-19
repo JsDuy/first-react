@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import QueryClientProviderWrapper from "@/components/QueryClientProviderWrapper";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -13,7 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode}) {
     <html lang="en">
       <body>
         <Header />
+        <QueryClientProviderWrapper>
         {children}
+        </QueryClientProviderWrapper>
         <Footer />
       </body>
     </html>
