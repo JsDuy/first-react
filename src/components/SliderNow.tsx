@@ -60,13 +60,13 @@ export default function MovieSlider() {
     );
   }
 
-  const moviesToShow = data && "results" in data ? data.results.slice(0, 8) : [];
+  const moviesToShow = data && "results" in data ? data.results.slice(0, 10) : [];
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto p-4">
-      <h2 className="text-2xl font-semibold text-center mb-4">NOW PLAYING MOVIES</h2>
+    <div className="w-full mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">NOW PLAYING MOVIES</h2>
       <div className="relative overflow-x-auto scrollbar-hide">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-3 md:grid-cols-5 gap-4">
           {moviesToShow.map((movie: Movie) => (
             <div key={movie.id} className="p-2">
               <div className="bg-[#1c1c1c] p-4 rounded-lg">

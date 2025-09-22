@@ -1,10 +1,10 @@
+import { Suspense } from 'react'
 import MovieSlider from "@/components/SliderNow";
-import Image from "next/image";
 
-export default function Home() {
+export default function home() {
   return (
-    <div>
-        <MovieSlider />
-    </div>
-  );
+    <Suspense fallback={<>...</>}>
+      <MovieSlider />
+    </Suspense>
+  )
 }

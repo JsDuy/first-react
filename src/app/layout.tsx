@@ -9,7 +9,13 @@ export const metadate: Metadata = {
   description: "Test with me@"
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode}) {
+export const dynamic = 'force-dynamic'
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
       <body>
