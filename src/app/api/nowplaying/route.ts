@@ -1,4 +1,5 @@
 import { TMDbResponse, ErrorResponse } from "@/types/movie";
+import { NextResponse } from "next/server";
 
 export async function fetchTMDbMovies(page: number = 1): Promise<TMDbResponse | ErrorResponse> {
   const apiKey = process.env.TMDB_API_KEY;
@@ -28,4 +29,11 @@ export async function fetchTMDbMovies(page: number = 1): Promise<TMDbResponse | 
     console.error('Fetch error:', err);
     return { error: (err as Error).message };
   }
+}
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const page = parseInt(searchParams.get('page') || '1', 10);
+  const result = await fetchTMDbMovies(page);
+  return NextResponse.json(result);
 }

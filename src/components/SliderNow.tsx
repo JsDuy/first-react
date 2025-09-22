@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { Movie, TMDbResponse, ErrorResponse } from "@/types/movie";
 import Link from "next/link";
-import { fetchTMDbMovies } from "../app/api/nowplaying/router";
 
 export default function MovieSlider() {
   const [data, setData] = useState<TMDbResponse | ErrorResponse | null>(null);
@@ -13,11 +12,17 @@ export default function MovieSlider() {
   useEffect(() => {
     const loadMovies = async () => {
       setLoading(true);
-      const result = await fetchTMDbMovies(page);
-      setData(result);
-      setLoading(false);
-      // Cuộn về đầu trang sau khi dữ liệu được tải
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        const res = await fetch(`/api/nowplaying?page=${page}`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+        const result = await res.json();
+        setData(result);
+      } catch (err) {
+        setData({ error: (err as Error).message });
+      } finally {
+        setLoading(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     };
     loadMovies();
   }, [page]);
