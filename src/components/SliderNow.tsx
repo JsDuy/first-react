@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Movie, TMDbResponse, ErrorResponse } from "@/types/movie"; // Giả sử tách ra file types.ts
+import { Movie, TMDbResponse, ErrorResponse } from "@/types/movie"; 
 import Link from "next/link";
 
 export async function fetchTMDbMovies(page: number = 1): Promise<TMDbResponse | ErrorResponse> {
