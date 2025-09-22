@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MovieDetails, ErrorResponse, VideoResult } from '@/types/detailFilm'
 
 async function fetchMovieDetails(id: string): Promise<MovieDetails | ErrorResponse> {
-  const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+  const apiKey = process.env.TMDB_API_KEY;
   if (!apiKey) {
     return { error: "TMDB_API_KEY not found in environment variables" };
   }
