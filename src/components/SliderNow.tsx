@@ -6,7 +6,7 @@ import Link from "next/link";
 export async function fetchTMDbMovies(page: number = 1): Promise<TMDbResponse | ErrorResponse> {
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   if (!apiKey) {
-    return { error: 'NEXY_PUBLIC_TMDB_API_KEY not found in environment variables' };
+    return { error: 'NEXT_PUBLIC_TMDB_API_KEY not found in environment variables' };
   }
 
   const url = `https://api.themoviedb.org/3/movie/now_playing?language=vi&api_key=bf36e4b99bc1418a6567fd3273518444&page=${page}`;
