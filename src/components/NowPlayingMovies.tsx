@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Movie, TMDbResponse, ErrorResponse } from "@/types/movie";
+import { Suspense } from 'react'
 
 export default function NowPlaying() {
   const nowStyle = {
@@ -131,7 +132,7 @@ export default function NowPlaying() {
   };
 
   return (
-    <>
+    <Suspense>
       <h1 className="text-3xl font-semibold text-center mb-4 mt-5">
         <strong>{searchQuery ? "SEARCH RESULTS" : "ALL MOVIES"}</strong>: Page {page}
       </h1>
@@ -183,6 +184,6 @@ export default function NowPlaying() {
           </>
         )}
       </div>
-    </>
+    </Suspense>
   );
 }
