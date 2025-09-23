@@ -4,39 +4,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Movie, TMDbResponse, ErrorResponse } from "@/types/movie";
 
-export async function fetchTMDbMovies(page: number = 1, searchQuery: string = ''): Promise<TMDbResponse | ErrorResponse> {
-  const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-  if (!apiKey) {
-    return { error: 'TMDB_API_KEY not found in environment variables' };
-  }
-
-  // Sử dụng endpoint tìm kiếm nếu có query, ngược lại dùng now_playing
-  const endpoint = searchQuery ? 'search/movie' : 'movie/now_playing';
-  const queryParam = searchQuery ? `&query=${encodeURIComponent(searchQuery)}` : '';
-  const url = `https://api.themoviedb.org/3/${endpoint}?language=vi&api_key=${apiKey}&page=${page}${queryParam}`;
-  const options = {
-    method: 'GET' as const,
-    headers: {
-      accept: 'application/json',
-    },
-  };
-
-  console.log('Calling URL:', url);
-  console.log('API Key exists:', !!apiKey);
-
-  try {
-    const res = await fetch(url, { ...options, cache: 'no-store' });
-    if (!res.ok) {
-      const errorBody = await res.json();
-      throw new Error(`HTTP error! Status: ${res.status} - ${errorBody.status_message || 'Unknown error'}`);
-    }
-    return await res.json();
-  } catch (err) {
-    console.error('Fetch error:', err);
-    return { error: (err as Error).message };
-  }
-}
-
 export default function NowPlaying() {
   const nowStyle = {
     boxShadow: "2px 2px 10px white",
@@ -56,11 +23,17 @@ export default function NowPlaying() {
   useEffect(() => {
     const loadMovies = async () => {
       setLoading(true);
-      const result = await fetchTMDbMovies(page, searchQuery);
-      setData(result);
-      setLoading(false);
-      // Cuộn về đầu trang sau khi dữ liệu được tải
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        const res = await fetch(`/api/nowplaying?page=${page}`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+        const result = await res.json();
+        setData(result);
+      } catch (err) {
+        setData({ error: (err as Error).message });
+      } finally {
+        setLoading(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     };
     loadMovies();
 
